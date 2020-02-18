@@ -2,17 +2,6 @@ kind: pipeline
 name: default
 
 steps:
-  - name: build
-    image: golang:1.13
-    environment:
-      GOOS: linux
-      GOARCH: amd64
-      GO111MODULE: 'on'
-      CGO_ENABLED: 1
-    commands:
-    - go test ./...
-    - go build -ldflags "-extldflags \"-static\"" -o waiter
-
   - name: publish
     image: plugins/docker
     settings:
